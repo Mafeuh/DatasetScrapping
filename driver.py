@@ -1,6 +1,6 @@
 from selenium.webdriver import Firefox
 
-def driver(url: str):
+def get_driver(url: str):
     """
     Returns a new driver instance linked to the URL
     :param url:
