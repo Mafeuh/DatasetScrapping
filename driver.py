@@ -29,3 +29,5 @@ def get_caradisiac_driver():
     except Exception as e:
         print("Connexion internet pourrie en vrai")
         driver.quit()
+
+    return driver
