@@ -2,18 +2,22 @@ from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options
 
-def get_driver(url: str):
+def get_driver(url: str, headless: bool = False):
     """
     Returns a new driver instance linked to the URL.
     """
-    driver = Firefox()
+    options = Options()
+    options.headless = headless
+
+    driver = Firefox(options=options)
     driver.get(url)
 
     return driver
 
 
-def get_caradisiac_driver():
+def get_caradisiac_driver(headless: bool = False):
     """
     Returns a new driver instance linked to Caradisiac website, with cookies accepted.
     """
@@ -27,7 +31,8 @@ def get_caradisiac_driver():
         )
         element.click()
     except Exception as e:
-        print("Connexion internet pourrie en vrai")
+        print("Un problème est survenu en voulant accepter les cookies.")
+        print("Erreur complète:", e)
         driver.quit()
 
     return driver

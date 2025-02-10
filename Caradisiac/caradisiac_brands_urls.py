@@ -1,3 +1,5 @@
+import json
+
 from driver import *
 from selenium.webdriver import Firefox
 
@@ -17,13 +19,8 @@ for brand_href in brands_href:
 
     brands[brand_name] = brand_url
 
-for brand in brands.keys():
-    driver.get(brands[brand])
-
-    # Find the 'Modeles' button and click it
-    modeles_button_xpath = "//div[contains(@class, 'navProd')]//a[contains(text(), 'Modèles')]"
-    modeles_button = driver.find_elements(By.XPATH, modeles_button_xpath)[1]
-    modeles_button.click()
+driver.close()
 
 
-driver.quit()
+with open('caradisiac_brands_urls.json', 'w+') as file:
+    json.dump(brands, file)
