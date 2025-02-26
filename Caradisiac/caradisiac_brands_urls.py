@@ -23,4 +23,4 @@ driver.close()
 
 
 with open('caradisiac_brands_urls.json', 'w+') as file:
-    json.dump(brands, file)
+    json.dump(brands, file, indent=4)
